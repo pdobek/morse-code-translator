@@ -1,5 +1,7 @@
 import React from 'react';
+import { Card, Carousel } from 'react-bootstrap';
 import './App.css';
+
 
 const morseCodes = {
   "A": ".-",
@@ -138,42 +140,32 @@ const App = () => {
 
   // Return the HTML for the webpage
   return (
-    <div>
+    <div className="App">
+      <header className="App-header">
 
-      <h1>Morse Code Translator</h1>
+        <h1>Morse Code Translator</h1>
 
-      <h2>Enter a text phrase to translate to Morse Code</h2>
+        <Card bg="bg_Primary" style={{ width: '18rem', backgroundColor:'blue'}}>
+          <Card.Body>
+            <Card.Title>Enter text phrase to translate</Card.Title>
+            <input id="morse_code" type="text" onChange={enCode} />
+            <Card.Text>
+              Morse Code: <strong>{phrase}</strong>    
+            </Card.Text>
+          </Card.Body>
+        </Card>
 
-            <label htmlFor="phrase">Enter Phrase: </label>
-            <input id="phrase" type="text" size="100" onChange={enCode} />
+        <Card style={{ width: '18rem', backgroundColor:'red' }}>
+          <Card.Body>
+            <Card.Title>Enter Morse Code to translate</Card.Title>
+            <input id="morse_code" type="text" onChange={deCode} />
+            <Card.Text>
+              Text: <strong>{morse_code}</strong>    
+            </Card.Text>
+          </Card.Body>
+        </Card>
 
-      <p>
-        Morse Code: <strong>{phrase}</strong>
-      </p>
-
-      <hr></hr>
-
-      <h2>Enter a Morse Code phrase to translate to text</h2>
-
-      <table>
-        <tr>
-          <td>
-      <label htmlFor="phrase">Enter Morse Code: </label>
-          </td>
-          <td>
-      <input id="morse_code" type="text" size="100" onChange={deCode} />
-          </td>
-          <td>
-            <img src="Morse Code.png" alt="American Morse Code" width="250" height="300" />
-          </td>
-        </tr>
-      </table>
-
-      <p>
-        Text: <strong>{morse_code}</strong>
-      </p>
-
-      <hr></hr>
+      </header>
 
     </div>
   );
