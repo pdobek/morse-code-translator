@@ -96,7 +96,7 @@ const App = () => {
     // If a non-alphanumeric is found, set ? as the value
     for (const i in temp) {
       temp[i] = morseCodes[temp[i].toUpperCase()] || '?';
-      temp[i] = temp[i] + "|";
+      temp[i] = temp[i] + " ";
     }
 
     // Write the Morse Code to the webpage
@@ -112,21 +112,23 @@ const App = () => {
     console.warn(val.target.value); //output the phrase to the console
     
     // create an array from the phrase string
-    const temp = val.target.value.split(" ");
-    var strDecodedMessage = "";
+    const temp = val.target.value.split(' ');
+    //var strDecodedMessage = "";
 
     // Loop through the array and find the code up to a space which indicates a new entry.
     for (const i in temp) {
       console.warn(temp[i]);
-      strDecodedMessage = strDecodedMessage + text[temp[i]] || '?';
-      strDecodedMessage = strDecodedMessage + " ";
+      temp[i] = text[temp[i]] || '?';
+
+      //strDecodedMessage = strDecodedMessage + text[temp[i]] || '?';
+      //strDecodedMessage = strDecodedMessage + " ";
       }
 
     // Write the Morse Code to the webpage
-    setMorseCode(strDecodedMessage);
+    setMorseCode(temp);
 
     // Log the Morse Code to the console
-    console.log(strDecodedMessage);
+    console.log(temp);
 
   };
 
@@ -157,6 +159,7 @@ const App = () => {
         <Card style={{ width: '18rem', backgroundColor:'red' }}>
           <Card.Body>
             <Card.Title>Enter Morse Code to translate</Card.Title>
+            <Card.Img variant="top" src="Morse Code.png?text=Morse Code" />
             <input id="morse_code" type="text" onChange={deCode} />
             <Card.Text>
               Text: <strong>{morse_code}</strong>    
